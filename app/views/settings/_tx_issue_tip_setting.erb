@@ -1,0 +1,142 @@
+<div class="container">
+  <!-- 상태 설정 그룹 -->
+
+
+  <!-- 제외 설정 그룹 -->
+  <div class="section">
+    <h3 class="title">보고 제외 설정</h3>
+    <div class="grid">
+
+      <div class="item">
+        <h3>이슈 팁 제외 설정</h3>
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[no_tip_for_bugs]', '1', @settings['no_tip_for_bugs'] == '1' %>
+          <span>QA 일감은 팁을 표시하지 않음</span>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[disable_need_to_start]', '1', @settings['disable_need_to_start'] == '1' %>
+          <span>'시작 필요' 팁 비활성화</span>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[disable_precedence_completed]', '1', @settings['disable_precedence_completed'] == '1' %>
+          <span>'선행 일감 완료됨' 팁 비활성화</span>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[disable_due_date_overdue]', '1', @settings['disable_due_date_overdue'] == '1' %>
+          <span>'지연' 팁 비활성화</span>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[disable_due_date_today]', '1', @settings['disable_due_date_today'] == '1' %>
+          <span>'오늘 마감' 팁 비활성화</span>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[disable_due_date_soon]', '1', @settings['disable_due_date_soon'] == '1' %>
+          <span>'마감 임박' 팁 비활성화</span>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[disable_different_version]', '1', @settings['disable_different_version'] == '1' %>
+          <span>'목표버전 불일치' 팁 비활성화</span>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <%= check_box_tag 'settings[disable_no_due_date]', '1', @settings['disable_no_due_date'] == '1' %>
+          <span>'완료일정 기입 필요' 팁 비활성화</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.section {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.title {
+  color: #2c3e50;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.item h3 {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9em;
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.select-wrapper {
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  min-height: 120px;
+  box-sizing: border-box;
+}
+
+.select:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+}
+
+/* 화면이 넓을 때는 2열 또는 3열로 표시 */
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+  }
+  
+  .item {
+    min-width: 0;
+  }
+}
+</style>
+
+<%= @settings %>

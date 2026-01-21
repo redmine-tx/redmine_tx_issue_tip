@@ -25,6 +25,7 @@ end
 Rails.application.config.after_initialize do
 
   require_dependency File.expand_path('../lib/tx_issue_patch', __FILE__)
+  require_dependency File.expand_path('../lib/tx_issue_tip_query_patch', __FILE__)
 
   # IssueQuery에 커스텀 컬럼 추가
   IssueQuery.available_columns += [

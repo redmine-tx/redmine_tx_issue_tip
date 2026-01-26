@@ -36,8 +36,8 @@ module TxIssuePatch
       end
     end
 
-    def tip( check_level = 0 )
-      tag = self.guide_tag( check_level )
+    def tip
+      tag = self.guide_tag
 
       case tag
       when nil
@@ -61,8 +61,7 @@ module TxIssuePatch
       end
     end
 
-    # check_level 이 1 이상일때는 실제로 문제 있는것만 리턴함
-    def guide_tag( check_level = 0 )
+    def guide_tag
 
       if IssueStatus.is_implemented?(self.status_id)
         return nil
@@ -80,35 +79,35 @@ module TxIssuePatch
       if !IssueStatus.is_in_progress?(self.status_id) then
 
         # 선행일감 완료된 경우
-        if self.start_date == nil && self.relations.any? { |r| r.relation_type == 'blocks' && r.issue_to_id == self.id && IssueStatus.is_implemented?(r.issue_from.status_id) } && check_level == 0 then
-          return :precedence_completed unless Setting[:plugin_redmine_tx_issue_tip][:disable_precedence_completed]
+        if self.start_date == nil && self.relations.any? { |r| r.relation_type == 'blocks' && r.issue_to_id == self.id && IssueStatus.is_implemented?(r.issue_from.status_id) } then
+          return :precedence_completed
         end
 
         # 시작일이 오늘 이전이면 시작 필요
-        if self.start_date && self.start_date <= Date.today && check_level == 0 then
-          return :need_to_start unless Setting[:plugin_redmine_tx_issue_tip][:disable_need_to_start]
+        if self.start_date && self.start_date <= Date.today then
+          return :need_to_start
         end
       end
 
       if self.due_date
         if (self.due_date - Date.today).to_i < 0
-          return :due_date_overdue unless Setting[:plugin_redmine_tx_issue_tip][:disable_due_date_overdue]
-        elsif (self.due_date - Date.today).to_i ==  0 && check_level == 0
-          return :due_date_today unless Setting[:plugin_redmine_tx_issue_tip][:disable_due_date_today]
-        elsif (self.due_date - Date.today).to_i <= 1 && check_level == 0
-          return :due_date_soon unless Setting[:plugin_redmine_tx_issue_tip][:disable_due_date_soon]
+          return :due_date_overdue
+        elsif (self.due_date - Date.today).to_i ==  0
+          return :due_date_today
+        elsif (self.due_date - Date.today).to_i <= 1
+          return :due_date_soon
         end
         return nil
       end
 
       if self.fixed_version_id && self.parent_issue_id && self.parent_issue && self.parent_issue.fixed_version_id != self.fixed_version_id then
-        return :different_version unless Setting[:plugin_redmine_tx_issue_tip][:disable_different_version]
+        return :different_version
       end
 
       return nil if Setting[:plugin_redmine_tx_issue_tip][:no_tip_for_bugs] && Tracker.is_bug?(self.tracker_id)
 
       if self.fixed_version && self.fixed_version.effective_date && self.fixed_version.effective_date < Date.today + 3.months then
-        return :no_due_date unless Setting[:plugin_redmine_tx_issue_tip][:disable_no_due_date]
+        return :no_due_date
       end
 
       nil

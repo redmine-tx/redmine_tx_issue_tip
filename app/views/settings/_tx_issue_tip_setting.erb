@@ -10,43 +10,8 @@
       <div class="item">
         <h3>이슈 팁 제외 설정</h3>
         <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[no_tip_for_bugs]', '1', @settings['no_tip_for_bugs'] == '1' %>
+          <%= check_box_tag 'settings[no_tip_for_bugs]', '1', Setting[:plugin_sc_report][:no_tip_for_bugs] == '1' %>
           <span>QA 일감은 팁을 표시하지 않음</span>
-        </div>
-
-        <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[disable_need_to_start]', '1', @settings['disable_need_to_start'] == '1' %>
-          <span>'시작 필요' 팁 비활성화</span>
-        </div>
-
-        <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[disable_precedence_completed]', '1', @settings['disable_precedence_completed'] == '1' %>
-          <span>'선행 일감 완료됨' 팁 비활성화</span>
-        </div>
-
-        <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[disable_due_date_overdue]', '1', @settings['disable_due_date_overdue'] == '1' %>
-          <span>'지연' 팁 비활성화</span>
-        </div>
-
-        <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[disable_due_date_today]', '1', @settings['disable_due_date_today'] == '1' %>
-          <span>'오늘 마감' 팁 비활성화</span>
-        </div>
-
-        <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[disable_due_date_soon]', '1', @settings['disable_due_date_soon'] == '1' %>
-          <span>'마감 임박' 팁 비활성화</span>
-        </div>
-
-        <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[disable_different_version]', '1', @settings['disable_different_version'] == '1' %>
-          <span>'목표버전 불일치' 팁 비활성화</span>
-        </div>
-
-        <div class="checkbox-wrapper">
-          <%= check_box_tag 'settings[disable_no_due_date]', '1', @settings['disable_no_due_date'] == '1' %>
-          <span>'완료일정 기입 필요' 팁 비활성화</span>
         </div>
       </div>
 
@@ -139,4 +104,4 @@
 }
 </style>
 
-<%= @settings %>
+<%= Setting[:plugin_sc_report] %>

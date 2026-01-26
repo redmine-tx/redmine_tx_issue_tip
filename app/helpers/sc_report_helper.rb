@@ -66,21 +66,9 @@ module ScReportHelper
   end
 =end
 
-  class CustomQueryColumn < QueryColumn
-    def initialize(name, options={})
-      super(name, options)
-    end
-
-    def value(issue)
-      # 여기서 컬럼에 표시할 값을 계산
-      case name
-      when :tip
-        issue.tip
-      when :fixed_version_plus
-        issue.fixed_version_plus
-      end
-    end
-  end
+  # CustomQueryColumn 클래스는 TxBaseHelper::CustomQueryColumn로 이동되었습니다
+  # 하위 호환성을 위한 alias
+  CustomQueryColumn = TxBaseHelper::CustomQueryColumn
 
   def build_issue_query(name, project, column_names = nil)
     query = IssueQuery.new(name: name)

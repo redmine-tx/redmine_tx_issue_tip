@@ -14,9 +14,24 @@ Redmine::Plugin.register :redmine_tx_issue_tip do
 end
 
 Rails.application.config.after_initialize do
-
   require_dependency File.expand_path('../lib/tx_issue_patch', __FILE__)
-  require_dependency File.expand_path('../lib/tx_issue_tip_query_patch', __FILE__)
 
+  TxBaseHelper.register_issue_query_columns do
+    virtual_column :tip,
+      value: ->(issue) { issue.tip },
+      caption: :field_tip,
+      sortable: "tip",
+      filter: :text
+
+    virtual_column :fixed_version_plus,
+      value: ->(issue) { issue.fixed_version_plus },
+      caption: :field_fixed_version_plus,
+      sortable: "#{Version.table_name}.effective_date"
+
+    virtual_column :estimated_hours_plus,
+      value: ->(issue) { issue.estimated_hours_plus },
+      caption: :field_estimated_hours_plus,
+      sortable: "estimated_hours"
+  end
 end
 

@@ -2,3 +2,13 @@
 en:
   permission_view_sc_report: "View report"
   field_tip: "Tip"
+  tip_need_to_start: "Start needed"
+  tip_precedence_completed: "Predecessor completed"
+  tip_due_date_overdue: "%{days} days overdue"
+  tip_due_date_today: "Due today"
+  tip_different_version: "Version mismatch"
+  tip_no_due_date: "Due date needed"
+  tip_due_date_soon: "Due soon"
+  label_tip_exclusion_settings: "Tip Exclusion Settings"
+  label_tip_exclusion: "Issue Tip Exclusion"
+  label_no_tip_for_bugs: "Don't show tips for bug issues"

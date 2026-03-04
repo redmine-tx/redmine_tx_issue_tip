@@ -4,14 +4,14 @@
 
   <!-- 제외 설정 그룹 -->
   <div class="section">
-    <h3 class="title">보고 제외 설정</h3>
+    <h3 class="title"><%= t('label_tip_exclusion_settings') %></h3>
     <div class="grid">
 
       <div class="item">
-        <h3>이슈 팁 제외 설정</h3>
+        <h3><%= t('label_tip_exclusion') %></h3>
         <div class="checkbox-wrapper">
           <%= check_box_tag 'settings[no_tip_for_bugs]', '1', Setting[:plugin_sc_report][:no_tip_for_bugs] == '1' %>
-          <span>QA 일감은 팁을 표시하지 않음</span>
+          <span><%= t('label_no_tip_for_bugs') %></span>
         </div>
       </div>
 

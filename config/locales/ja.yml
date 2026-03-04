@@ -1,0 +1,13 @@
+ja:
+  field_tip: "対応必要"
+  permission_view_sc_report: "レポート表示"
+  tip_need_to_start: "開始が必要"
+  tip_precedence_completed: "先行タスク完了"
+  tip_due_date_overdue: "%{days}日遅延"
+  tip_due_date_today: "本日締切"
+  tip_different_version: "バージョン不一致"
+  tip_no_due_date: "期日の入力が必要"
+  tip_due_date_soon: "締切間近"
+  label_tip_exclusion_settings: "チップ除外設定"
+  label_tip_exclusion: "イシューチップ除外"
+  label_no_tip_for_bugs: "バグにはチップを表示しない"

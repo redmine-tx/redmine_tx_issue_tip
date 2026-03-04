@@ -1,0 +1,13 @@
+zh:
+  field_tip: "需处理"
+  permission_view_sc_report: "查看报告"
+  tip_need_to_start: "需要开始"
+  tip_precedence_completed: "前置任务已完成"
+  tip_due_date_overdue: "逾期%{days}天"
+  tip_due_date_today: "今日截止"
+  tip_different_version: "目标版本不一致"
+  tip_no_due_date: "需要填写截止日期"
+  tip_due_date_soon: "即将截止"
+  label_tip_exclusion_settings: "提示排除设置"
+  label_tip_exclusion: "问题提示排除"
+  label_no_tip_for_bugs: "不显示缺陷的提示"
